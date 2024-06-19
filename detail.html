@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/386cf1af97.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            // Example product data
+            const products = {
+    "1": {
+        "name": "ARMANI CODE",
+        "desc": "ზედა ნოტებია ბერგამოტი და ბერგამოტის ფოთოლი;შუა ნოტებია ზამბახი, კლარის სალბი, ორასი და ალდეჰიდები;საბაზისო ნოტებია ტონკას ლობიო და კედარი",
+        "price": "190 ₾",
+        "image": "/img/blackcode.jpeg",
+        
+        
+    },
+    "2": {
+        "name": "SCANDAL",
+        "desc": "არომატის სასტარტო ნოტებს, მუშკის შალფეის სისადავე, დახვეწილი კარამელის ოდნავ მარილიანი ჩრდილები და ტონკას მარცვლების ბალზამური აკორდები ქმნის. მდგრად შლეიფში კარგად იგრძნობა ვეტივერის კაშკაშა ძლიერება. პარფიუმერული ფორმულის მასკულარულ ელეგანტურობაზე, სუნამოს ფლაკონის ორიგინალური დიზაინიც  მეტყველებს. ის შესრულებულია დახვეწილ, ნისლოვან ტონებში და გვირგვინის  ოქროს ფერი  თავსახურით სრულდება. Jean Paul Gaultier Scandal Pour Homme – ხის უნიკალური აღმოსავლური აპერკოტი, გამარჯვებისა და მსოფლიოზე ბატონობის სიმბოლო!",
+        "price": "400 ₾",
+        "image": "/img/scandal.jpeg",
+      
+    },
+    "3": {
+        "name": "DOLCE & GABBANA INTENSO",
+        "desc": "მამაკაცის სუნამო Dolce & Gabbana Pour Homme Intenso – ეს არის სუფთა ინსტინქტი, თავისუფლად გამოხატული ემოციის ძალა. ეს არის გადამწყვეტი და თავდაჯერებული ადამიანის სიძლიერე, ტრადიციების მთელი გულით ერთგული, მაგრამ თანამედროვეობით ტკბილი. ეს ხის არომატული სუნამო იხსნება ნათელი წყლის ნოტებით ბაზილიკის და ლავანდის მწვანე აკორდებით. გულში არის თამბაქოს კაცური არომატი, სალბი და კვიპაროსის ნოტები. საკმევლის, სანდლის ხის და უნიკალური მოპელის აკორდის ერთობლიობა ბაზაში ასახავს მდიდრულ ყვავილოვან, ხის და თაფლის ტონებს.",
+        "price": "360 ₾",
+        "image": "/img/intenso.jpeg",
+      
+    }
+    // Add more products as needed
+};
+
+
+            if (products[productId]) {
+                const product = products[productId];
+                document.querySelector('.product-description h1').textContent = product.name;
+                document.querySelector('.product-description p').textContent = product.desc;
+                document.querySelector('.product-price span').textContent = product.price;
+                document.querySelector('.leftcolumn img').src = product.image;
+
+                const benefitsList = document.querySelector('.description ul');
+                benefitsList.innerHTML = '';
+                product.benefits.forEach(benefit => {
+                    const li = document.createElement('li');
+                    li.textContent = benefit;
+                    benefitsList.appendChild(li);
+                });
+
+                const variantsList = document.querySelector('.variant ul');
+                variantsList.innerHTML = '';
+                product.variants.forEach(variant => {
+                    const li = document.createElement('li');
+                    const img = document.createElement('img');
+                    img.src = variant;
+                    li.appendChild(img);
+                    variantsList.appendChild(li);
+                });
+            }
+        });
+        $(document).ready(function() {
+ 
+ $('.color-choose input').on('click', function() {
+     var headphonesColor = $(this).attr('data-image');
+
+     $('.active').removeClass('active');
+     $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+     $(this).addClass('active');
+ });
+
+});
+    </script>
+</head>
+<body>
+    
+    <section id="header">
+        <div class="header container">
+          <div class="nav-bar">
+            <div class="brand">
+              <a href="/index.html#hero">
+                <h1>შესვლა</h1>
+              </a>
+            </div>
+            <div class="nav-list">
+              <div class="hamburger">
+                <div class="bar"></div>
+              </div>
+              <ul>
+                <li><a href="/index.html#hero" data-after="Login">მთავარი</a></li>
+                <li><a href="/index.html#gallery" data-after="Contact">გალერეა</a></li>
+                <li><a href="/index.html#about" data-after="About">შესახებ</a></li>
+                <li><a href="/index.html" data-after="Contact">კონტაქტი</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container" style="display: flex;">
+<div class="leftcolumn">
+    <img  src="">
+
+</div>
+            <!-- Left Column / Headphones Image -->
+
+      
+      
+            <!-- Right Column -->
+            <div class="right-column">
+      
+              <!-- Product Description -->
+              <div class="product-description">
+                <h1></h1>
+                <p></p>
+              </div>
+      
+              <!-- Product Configuration -->
+            
+      
+              <!-- Product Pricing -->
+              <div class="product-price">
+                <span></span>
+                <a href="/pay.html" class="cart-btn">შეძენა</a>
+              </div>
+            </div>
+          </div>
+
+      </section>
+
+      <section id="footer">
+        <footer class="footer">
+          <div class="container">
+           <div class="row">
+             <div class="footer-col">
+               <h4>company</h4>
+               <ul>
+                 <li><a href="#">about us</a></li>
+                 <li><a href="#">our services</a></li>
+                 <li><a href="#">privacy policy</a></li>
+                 <li><a href="#">affiliate program</a></li>
+               </ul>
+             </div>
+             <div class="footer-col">
+               <h4>get help</h4>
+               <ul>
+                 <li><a href="#">FAQ</a></li>
+                 <li><a href="#">shipping</a></li>
+                 <li><a href="#">returns</a></li>
+                 <li><a href="#">order status</a></li>
+                 <li><a href="#">payment options</a></li>
+               </ul>
+             </div>
+             <div class="footer-col">
+               <h4>online shop</h4>
+               <ul>
+                 <li><a href="#">watch</a></li>
+                 <li><a href="#">bag</a></li>
+                 <li><a href="#">shoes</a></li>
+                 <li><a href="#">dress</a></li>
+               </ul>
+             </div>
+             <div class="footer-col">
+               <h4>follow us</h4>
+               <div class="social-links">
+                 <a href="#"><i class="fab fa-facebook-f"></i></a>
+                 <a href="#"><i class="fab fa-twitter"></i></a>
+                 <a href="#"><i class="fab fa-instagram"></i></a>
+                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
+               </div>
+             </div>
+           </div>
+          </div>
+       </footer>
+      </section>
+      <script src="./app.js"></script>
+
+</body>
+</html>

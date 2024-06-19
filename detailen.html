@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/386cf1af97.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+
+            // Example product data
+            const products = {
+    "1": {
+        "name": "ARMANI CODE",
+        "desc": "Top notes are bergamot and bergamot leaf; middle notes are iris, clary sage, orris and aldehydes; base notes are tonka bean and cedar.",
+        "price": "190 ₾",
+        "image": "/img/blackcode.jpeg",
+        
+        
+    },
+    "2": {
+        "name": "SCANDAL",
+        "desc": "The starting notes of the aroma are the gentleness of musk sage, slightly salty shades of refined caramel and balsamic accords of tonka beans. The bright power of Vetiver is well felt in the persistent trail. The original design of the perfume bottle also speaks of the masculine elegance of the perfume formula. It is done in subtle, hazy tones and the golden color of the crown is completed by the cap. Jean Paul Gaultier Scandal Pour Homme – a unique oriental uppercut of wood, a symbol of victory and world domination!",
+        "price": "400 ₾",
+        "image": "/img/scandal.jpeg",
+      
+    },
+    "3": {
+        "name": "DOLCE & GABBANA INTENSO",
+        "desc": "Men's perfume Dolce & Gabbana Pour Homme Intenso is pure instinct, the power of freely expressed emotion. This is the strength of a determined and confident person, wholeheartedly loyal to tradition but sweetened by modernity. This woody aromatic perfume opens with clear aquatic notes with green accords of basil and lavender. In the heart there is a masculine aroma of tobacco, sage and cypress notes. A combination of incense, sandalwood and a unique mopel accord in the base reveals luxurious floral, woody and honey tones.",
+        "price": "360 ₾",
+        "image": "/img/intenso.jpeg",
+      
+    }
+    // Add more products as needed
+};
+
+
+            if (products[productId]) {
+                const product = products[productId];
+                document.querySelector('.product-description h1').textContent = product.name;
+                document.querySelector('.product-description p').textContent = product.desc;
+                document.querySelector('.product-price span').textContent = product.price;
+                document.querySelector('.leftcolumn img').src = product.image;
+
+                const benefitsList = document.querySelector('.description ul');
+                benefitsList.innerHTML = '';
+                product.benefits.forEach(benefit => {
+                    const li = document.createElement('li');
+                    li.textContent = benefit;
+                    benefitsList.appendChild(li);
+                });
+
+                const variantsList = document.querySelector('.variant ul');
+                variantsList.innerHTML = '';
+                product.variants.forEach(variant => {
+                    const li = document.createElement('li');
+                    const img = document.createElement('img');
+                    img.src = variant;
+                    li.appendChild(img);
+                    variantsList.appendChild(li);
+                });
+            }
+        });
+        $(document).ready(function() {
+ 
+ $('.color-choose input').on('click', function() {
+     var headphonesColor = $(this).attr('data-image');
+
+     $('.active').removeClass('active');
+     $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+     $(this).addClass('active');
+ });
+
+});
+    </script>
+</head>
+<body>
+    
+    <section id="header">
+        <div class="header container">
+          <div class="nav-bar">
+            <div class="brand">
+              <a href="#hero">
+                <h1>შესვლა</h1>
+              </a>
+            </div>
+            <div class="nav-list">
+              <div class="hamburger">
+                <div class="bar"></div>
+              </div>
+              <ul>
+                <li><a href="#hero" data-after="Login">Main</a></li>
+                <li><a href="#gallery" data-after="Contact">Galerry</a></li>
+                <li><a href="#about" data-after="About">About</a></li>
+                <li><a href="#contact" data-after="Contact">Contact</a></li>
+                <li><a href="#shop" data-after="Contact">Shopping</a></li>
+                <li><a href="/index.html" data-after="Contact">Georgian</a></li>
+  
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="container" style="display: flex;">
+<div class="leftcolumn">
+    <img  src="">
+
+</div>
+            <!-- Left Column / Headphones Image -->
+
+      
+      
+            <!-- Right Column -->
+            <div class="right-column">
+      
+              <!-- Product Description -->
+              <div class="product-description">
+                <h1></h1>
+                <p></p>
+              </div>
+      
+              <!-- Product Configuration -->
+            
+      
+              <!-- Product Pricing -->
+              <div class="product-price">
+                <span></span>
+                <a href="/pay.html" class="cart-btn">Add to cart</a>
+              </div>
+            </div>
+          </div>
+
+      </section>
+      <section id="footer">
+        <footer class="footer">
+          <div class="container">
+           <div class="row">
+             <div class="footer-col">
+               <h4>company</h4>
+               <ul>
+                 <li><a href="#about">About</a></li>
+                 <li><a href="#contact">Contact</a></li>
+                 <li><a href="#shop">Shopping</a></li>
+                 <li><a href="#gallery">Gallery</li>
+               </ul>
+             </div>
+          
+             <div class="footer-col">
+               <h4>online shop</h4>
+               <ul>
+                 <li><a href="/detail.html?id=1">ARMANI</a></li>
+                 <li><a href="/detail.html?id=2">Jean Paul Gaultier</a></li>
+                 <li><a href="/detail.html?id=3">Dolce&Gabbana</a></li>
+               </ul>
+             </div>
+             <div class="footer-col">
+               <h4>follow us</h4>
+               <div class="social-links">
+                 <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                 <a href="#"><i class="fab fa-twitter"></i></a>
+                 <a href="#"><i class="fab fa-instagram"></i></a>
+                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
+               </div>
+             </div>
+           </div>
+          </div>
+       </footer>
+      </section>
+      <script src="./app.js"></script>
+
+</body>
+</html>

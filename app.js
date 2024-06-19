@@ -24,3 +24,48 @@ menu_item.forEach((item) => {
 	});
 });
  
+// Get the modal
+var modal = document.getElementById("authModal");
+
+// Get the link that opens the modal
+var loginLink = document.querySelector('a[href="#hero"]');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// Get the forms and the toggle links
+var loginForm = document.getElementById("loginForm");
+var signUpForm = document.getElementById("signUpForm");
+var showSignUp = document.getElementById("showSignUp");
+var showLogin = document.getElementById("showLogin");
+
+// When the user clicks the link, open the modal
+loginLink.onclick = function(event) {
+  event.preventDefault();
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+	modal.style.display = "none";
+  }
+}
+
+// Toggle between forms
+showSignUp.onclick = function(event) {
+  event.preventDefault();
+  loginForm.style.display = "none";
+  signUpForm.style.display = "block";
+}
+
+showLogin.onclick = function(event) {
+  event.preventDefault();
+  loginForm.style.display = "block";
+  signUpForm.style.display = "none";
+}
